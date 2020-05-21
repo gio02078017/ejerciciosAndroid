@@ -12,6 +12,7 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -49,25 +50,38 @@ public class MiFirebaseMessagingService extends FirebaseMessagingService {
         Log.d(TAG, "showNotification: ");
 
         String id = "coronapp";
-
         //Bitmap bitmap = getBitmapfromUrl("https://previews.123rf.com/images/dstarky/dstarky1702/dstarky170200477/71558432-icono-de-internet-o-logotipo-en-estilo-de-l%C3%ADnea-moderna-pictograma-de-contorno-negro-de-alta-calidad-p.jpg");
-        Bitmap bitmap = getBitmapfromUrl(image);
 
         NotificationManager nm =  (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,id);
+        createChancel(nm, id);
 
+        nm.notify(getIdNotify(), notification(id, title, message, image).build());
 
+    }
 
+    private void createChancel(NotificationManager nm, String id){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel nc = new NotificationChannel(id, "nuevo", NotificationManager.IMPORTANCE_HIGH);
             nc.setShowBadge(true);
             nm.createNotificationChannel(nc);
         }
+    }
 
+    private int getIdNotify(){
+        Random random = new Random();
+        int idNotify = random.nextInt(8000);
+        return idNotify;
+    }
+
+    private NotificationCompat.Builder notification(String id, String title, String message, String image){
+        Bitmap bitmap = getBitmapfromUrl(image);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,id);
         builder.setAutoCancel(true)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(title)
                 .setSmallIcon(R.drawable.ic_av_timer_black_24dp)
+                .setColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setContentText(message)
                 .setContentIntent(callPendingIntent())
                 .setContentInfo("nuevo");
@@ -76,10 +90,7 @@ public class MiFirebaseMessagingService extends FirebaseMessagingService {
             builder.setLargeIcon(bitmap);
         }
 
-        Random random = new Random();
-        int idNotify = random.nextInt(8000);
-        nm.notify(idNotify, builder.build());
-
+        return builder;
     }
 
     public Bitmap getBitmapfromUrl(String imageUrl) {
