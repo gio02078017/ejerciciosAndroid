@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836720104058",
+    "firebase_url": "https://notification4-9ae58.firebaseio.com",
+    "project_id": "notification4-9ae58",
+    "storage_bucket": "notification4-9ae58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836720104058:android:a6d18196f8f7d63bf561c3",
+        "android_client_info": {
+          "package_name": "com.gospinal.notification4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836720104058-6u0hkumg6kb88ntud68s8ei77kgimchl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gospinal.notification4",
+            "certificate_hash": "12480bc1a7a2e233755578ee5636887340a1669b"
+          }
+        },
+        {
+          "client_id": "836720104058-ee4llaj6d49g5dnru1r3rg5re9aokk5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYzAbmg7qowvZveE-ee0FJnnDYJ6JOAwk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836720104058-ee4llaj6d49g5dnru1r3rg5re9aokk5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

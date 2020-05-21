@@ -1,0 +1,2 @@
+rootProject.name='NotificationPush2'
+include ':app'
